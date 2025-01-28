@@ -3,7 +3,7 @@ import { FC } from "react";
 
 const TodoCard: FC = () => {
 	return (
-		<div className="bg-white text-black flex justify-around m-3 p-3 rounded-md">
+		<div className="bg-white text-black flex justify-around items-center m-3 p-3 rounded-md">
 			<input type="checkbox" />
 			<h4 className="font-bold">Tittle</h4>
 			<h4>Time</h4>
