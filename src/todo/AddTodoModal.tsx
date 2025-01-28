@@ -3,64 +3,76 @@ import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
-	DialogFooter,
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { DialogClose } from "@radix-ui/react-dialog";
 
-import { FC, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 
 const AddTodoModal: FC = () => {
 	const [task, setTask] = useState("");
 	const [description, setDescription] = useState("");
+
+	const handleSubmit = (e: FormEvent) => {
+		e.preventDefault();
+		console.log({ task, description });
+
+		// Clear the inputs after submission
+		setTask("");
+		setDescription("");
+	};
+
 	return (
 		<Dialog>
-			<form action="">
-				<DialogTrigger asChild>
-					<Button className="">Add todo</Button>
-				</DialogTrigger>
-				<DialogContent className="sm:max-w-[425px]">
-					<DialogHeader>
-						<DialogTitle>List Your Todo</DialogTitle>
-						<DialogDescription>
-							List your todo of your daily life.
-						</DialogDescription>
-					</DialogHeader>
+			<DialogTrigger asChild>
+				<Button className="">Add Todo</Button>
+			</DialogTrigger>
+			<DialogContent className="sm:max-w-[425px]">
+				<DialogHeader>
+					<DialogTitle>List Your Todo</DialogTitle>
+					<DialogDescription>
+						List your todo of your daily life.
+					</DialogDescription>
+				</DialogHeader>
+				<form onSubmit={handleSubmit}>
 					<div className="grid gap-4 py-4">
 						<div className="grid grid-cols-4 items-center gap-4">
-							<Label htmlFor="name" className="text-right">
+							<Label htmlFor="task" className="text-right">
 								Task
 							</Label>
 							<Input
+								value={task}
+								onChange={(e) => setTask(e.target.value)}
 								id="task"
+								name="task"
 								type="text"
 								placeholder="Write your task"
 								className="col-span-3"
 							/>
 						</div>
 						<div className="grid grid-cols-4 items-center gap-4">
-							<Label htmlFor="username" className="text-right">
+							<Label htmlFor="description" className="text-right">
 								Description
 							</Label>
 							<Input
+								value={description}
+								onChange={(e) => setDescription(e.target.value)}
 								id="description"
+								name="description"
 								type="text"
-								placeholder="write your description"
+								placeholder="Write your description"
 								className="col-span-3"
 							/>
 						</div>
 					</div>
-					<DialogFooter>
-						<DialogClose asChild>
-							<Button type="submit">Save changes</Button>
-						</DialogClose>
-					</DialogFooter>
-				</DialogContent>
-			</form>
+					<div className="text-right">
+						<Button type="submit">Save Changes</Button>
+					</div>
+				</form>
+			</DialogContent>
 		</Dialog>
 	);
 };
