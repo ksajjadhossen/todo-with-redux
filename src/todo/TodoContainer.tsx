@@ -16,6 +16,11 @@ const TodoContainer: FC = () => {
 				</div> */}
 
 				<TodoCard></TodoCard>
+				<TodoCard></TodoCard>
+				<TodoCard></TodoCard>
+				<TodoCard></TodoCard>
+				<TodoCard></TodoCard>
+				<TodoCard></TodoCard>
 			</div>
 		</div>
 	);
