@@ -23,8 +23,12 @@ const todoSlice = createSlice({
 				id: Math.random().toString(36).substr(2, 9),
 			});
 		},
+
+		removeTodo: (state, action: PayloadAction<string>) => {
+			state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+		},
 	},
 });
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, removeTodo } = todoSlice.actions;
 
 export default todoSlice.reducer;

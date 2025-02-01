@@ -18,6 +18,7 @@ const AddTodoModal: FC = () => {
 	const [task, setTask] = useState("");
 	const [description, setDescription] = useState("");
 	const dispatch = useAppDispatch();
+
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 		const taskDetails = {
