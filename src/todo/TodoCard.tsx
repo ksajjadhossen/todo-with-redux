@@ -26,9 +26,9 @@ const TodoCard: FC<TTodoCardProps> = ({
 			<h4 className="font-bold">{tittle}</h4>
 			<h4>
 				{isCompleted ? (
-					<p className="text-red-500 font-bold">Pending</p>
+					<p className="text-green-500 font-bold">Done</p>
 				) : (
-					<p className="text-green-500 font-bold">Completed</p>
+					<p className="text-red-500 font-bold">Pending</p>
 				)}
 			</h4>
 			<h4>{description}</h4>
